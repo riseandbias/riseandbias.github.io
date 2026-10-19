@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; --fg: #1d1d1f; --bg: #ffffff; --muted: #555; --line: #ddd; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #ececec; --bg: #161616; --muted: #aaa; --line: #333; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 6px 8px 6px 0; vertical-align: top; }
+  code { font-size: .9em; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+<h1>Privacy Policy</h1>
+<p class="sub">Rise &amp; Bias Factory &middot; Effective date: October 20, 2026 &middot; <a href="index.html">Home</a></p>
+
+<h2>1. Who we are and who uses this tool</h2>
+<p>Rise &amp; Bias Factory ("the tool") is an internal command-line tool operated by the owner of the
+Rise &amp; Bias YouTube channel. Its only user is the channel owner. It runs on the owner's own computer.
+It does not collect information about viewers or any other person.</p>
+
+<h2>2. Use of YouTube API Services</h2>
+<p>The tool uses YouTube API Services to upload videos, thumbnails and captions to the owner's own YouTube channel.
+By using the tool, the user agrees to be bound by the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>.
+Google's handling of data is described in the <a href="http://www.google.com/policies/privacy">Google Privacy Policy</a>.</p>
+
+<h2>3. Information the tool accesses, stores and uses</h2>
+<table>
+  <tr><th>Information</th><th>How it is used</th><th>Where and how long it is kept</th></tr>
+  <tr><td>OAuth access and refresh tokens for the owner's Google account (scope <code>youtube.force-ssl</code>)</td>
+      <td>To call the YouTube Data API on the owner's behalf.</td>
+      <td>In a local file on the owner's computer, until the owner signs out or revokes access.</td></tr>
+  <tr><td>The signed-in channel's ID and title (<code>channels.list</code>)</td>
+      <td>To confirm that the signed-in channel is the Rise &amp; Bias channel before uploading.</td>
+      <td>Shown on screen only; not stored.</td></tr>
+  <tr><td>The ID and link of each video and Short the tool uploaded</td>
+      <td>To prevent duplicate uploads and to link each Short to the full video.</td>
+      <td>In a local file on the owner's computer. Before each upload, IDs last confirmed 25 or more days ago are
+          re-checked with the YouTube Data API (<code>videos.list</code>), and an ID is deleted if the video no longer exists,
+          so no stored ID goes more than 30 days without being refreshed.</td></tr>
+  <tr><td>The status of an uploaded video (privacy, scheduled time, upload status, AI disclosure, made-for-kids)</td>
+      <td>To confirm the upload settings.</td>
+      <td>Shown on screen only; not stored.</td></tr>
+</table>
+<p>The tool does not access or store information about other channels, other people's videos, comments, subscribers,
+viewers, or YouTube Analytics data.</p>
+
+<h2>4. Sharing</h2>
+<p>The tool does not sell, share, or transfer YouTube API Data to any third party. The tool uses other services
+(for example, AI services for writing scripts and generating narration and images) to produce videos; no YouTube API
+Data is sent to those services.</p>
+
+<h2>5. Cookies, advertising and third-party content</h2>
+<p>The tool does not use cookies, does not store information on viewers' devices, and does not show advertising or
+third-party content. This website does not use cookies or analytics.</p>
+
+<h2>6. Revoking access and deleting data</h2>
+<ul>
+  <li>Sign out in the tool: running <code>factory youtube-logout</code> revokes the token with Google immediately,
+      deletes the stored token, and deletes the stored video IDs and links.</li>
+  <li>Revoke access through Google: visit the Google security settings page at
+      <a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a> and remove access
+      for this app. The owner, who is the only user, then runs <code>factory youtube-logout</code> to delete the stored
+      data within 7 days.</li>
+  <li>To ask for deletion of any data, contact us (below). We delete it within 7 days.</li>
+</ul>
+
+<h2>7. Security</h2>
+<p>Tokens and stored data are kept only on the owner's computer, are excluded from source control, and are not
+uploaded to any server operated by us.</p>
+
+<h2>8. Changes</h2>
+<p>If this policy changes, the updated version will be posted on this page with a new effective date.</p>
+
+<h2>9. Contact</h2>
+<p>Questions or complaints about privacy: Rise &amp; Bias, <a href="mailto:riseandbias@gmail.com">riseandbias@gmail.com</a></p>
+</main>
+</body>
+</html>

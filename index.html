@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rise &amp; Bias Factory</title>
+<style>
+  :root { color-scheme: light dark; --fg: #1d1d1f; --bg: #ffffff; --muted: #555; --line: #ddd; }
+  @media (prefers-color-scheme: dark) { :root { --fg: #ececec; --bg: #161616; --muted: #aaa; --line: #333; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  h2 { font-size: 1.2rem; margin-top: 2em; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  nav a { margin-right: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+  th, td { text-align: left; border-bottom: 1px solid var(--line); padding: 6px 8px 6px 0; vertical-align: top; }
+  code { font-size: .9em; overflow-wrap: anywhere; }
+  footer { margin-top: 48px; color: var(--muted); font-size: .9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>Rise &amp; Bias Factory</h1>
+<p class="sub">An internal production tool for the Rise &amp; Bias YouTube channel (<a href="https://www.youtube.com/@RiseAndBias">@RiseAndBias</a>).</p>
+<nav><a href="privacy.html">Privacy Policy</a><a href="#terms">Terms of Use</a></nav>
+
+<h2>What this tool is</h2>
+<p>Rise &amp; Bias Factory is a command-line tool that helps the owner of the Rise &amp; Bias channel produce and upload
+English-language educational videos about business history and behavioral psychology.</p>
+<ul>
+  <li>It is used by one person only: the owner of the Rise &amp; Bias channel.</li>
+  <li>It runs on the owner's own computer. It is not a public service, and there is no sign-up.</li>
+  <li>It accesses only the owner's own YouTube channel. It does not access other people's accounts, channels, videos or data.</li>
+</ul>
+
+<h2>How it uses YouTube API Services</h2>
+<p>This tool uses YouTube API Services. After the owner signs in with Google (OAuth 2.0) and approves a finished video,
+the tool uploads it to the owner's channel as a <strong>private</strong> video with a scheduled publish time, and YouTube
+publishes it at that time. Each day this is at most one long video and up to five Shorts cut from it.</p>
+<table>
+  <tr><th>API method</th><th>Purpose</th></tr>
+  <tr><td><code>channels.list</code> (mine)</td><td>Confirm that the signed-in channel is the Rise &amp; Bias channel before anything is uploaded.</td></tr>
+  <tr><td><code>videos.insert</code></td><td>Upload the approved long video and its Shorts as private videos with a scheduled publish time, with the altered or synthetic content setting (<code>containsSyntheticMedia</code>) set to true and "made for kids" set to no.</td></tr>
+  <tr><td><code>thumbnails.set</code></td><td>Set the thumbnail the owner chose for the long video.</td></tr>
+  <tr><td><code>captions.insert</code></td><td>Upload the English caption file for the long video.</td></tr>
+  <tr><td><code>videos.list</code></td><td>Read back the status of the uploaded video, and re-check that previously uploaded videos still exist (see the Privacy Policy).</td></tr>
+</table>
+<p>OAuth scope requested: <code>https://www.googleapis.com/auth/youtube.force-ssl</code>
+(required by <code>captions.insert</code>; it also covers the other methods above).</p>
+
+<h2>Human review</h2>
+<ul>
+  <li>Every script is checked against its sources and approved by the owner before production continues.</li>
+  <li>Every finished video and thumbnail is approved by the owner before it can be uploaded. The owner chooses the title.</li>
+  <li>Before anything is sent, the tool shows the YouTube upload notice below and uploads only when the owner confirms it.
+      A dry-run mode shows exactly what would be sent without connecting to YouTube.</li>
+  <li>Each upload is started by the owner with an explicit command. The tool does not upload unattended.</li>
+  <li>AI-generated narration and images are disclosed in the video settings and in the description.</li>
+</ul>
+
+<h2 id="terms">Terms of Use</h2>
+<p>This tool is for the internal use of the channel owner only. By using this tool, users agree to be bound by the
+<a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Use of this tool is also subject to the
+<a href="privacy.html">Privacy Policy</a> and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<p>By clicking 'upload,' you certify that the content you are uploading complies with the YouTube Terms of Service
+(including the YouTube Community Guidelines) at <a href="https://www.youtube.com/t/terms">https://www.youtube.com/t/terms</a>.
+Please be sure not to violate others' copyright or privacy rights.</p>
+<p>This tool is not made by, endorsed by, or affiliated with YouTube or Google.</p>
+
+<h2>Contact</h2>
+<p>Rise &amp; Bias &middot; <a href="mailto:riseandbias@gmail.com">riseandbias@gmail.com</a></p>
+
+<footer>Last updated: October 20, 2026</footer>
+</main>
+</body>
+</html>
